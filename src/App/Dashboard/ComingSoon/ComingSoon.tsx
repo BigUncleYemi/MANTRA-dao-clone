@@ -12,11 +12,11 @@ const ComingSoon: React.FC = () => {
         <img src={"https://app.mantradao.com/static/media/coming-icon.3ab2db42.svg"} height="300" alt="coming soon" />
       </Grid>
       <Grid item>
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h3" gutterBottom style={{fontWeight: "bolder", marginTop: 30}}>
           COMING SOON
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item xs={6}>
         <Typography variant="h6" gutterBottom align="center">
           This Feature is already planned and will be implemented very soon! Stay tuned to our official channels for more announcements and info.
         </Typography>

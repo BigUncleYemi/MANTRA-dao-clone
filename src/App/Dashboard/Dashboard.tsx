@@ -21,6 +21,7 @@ import "./dashboard.scss";
 import { routes } from "../../utils/Json";
 import { Close } from "@material-ui/icons";
 import ComingSoon from "./ComingSoon";
+import Staking from "./Staking";
 
 const drawerWidth = 211;
 
@@ -112,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
   },
   container: {
-    paddingTop: theme.spacing(6),
+    paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(4),
     backgroundColor: "#ffffff",
   },
@@ -154,7 +155,7 @@ const DashboardListItemIcon = withStyles({
 
 const mainListItems = (
   <div className="pb-5">
-    <div style={{ paddingTop: 70 }} />
+    <div style={{ paddingTop: 40 }} />
     {routes.map(({ path, Icon, name }, index) => (
       <NavLink exact to={path} key={index}>
         <div className="a">
@@ -224,9 +225,9 @@ const Dashboard: React.FC<{
         <List id="nav-side">{mainListItems}</List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Switch>
+            <Route path="/staking" component={Staking} />
             <Route path="*" component={ComingSoon} />
           </Switch>
         </Container>
