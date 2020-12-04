@@ -1,5 +1,4 @@
 import * as React from "react";
-// import clsx from 'clsx';
 import { Switch, Route, withRouter, NavLink } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -153,33 +152,6 @@ const DashboardListItemIcon = withStyles({
   },
 })((props) => <ListItemIcon id="nav-side_icon" {...props} />);
 
-const mainListItems = (
-  <div className="pb-5">
-    <div style={{ paddingTop: 40 }} />
-    {routes.map(({ path, Icon, name }, index) => (
-      <NavLink exact to={path} key={index}>
-        <div className="a">
-          <div />
-        </div>
-        <DashboardListItem>
-          <DashboardListItemIcon>
-            <Icon title={name} />
-          </DashboardListItemIcon>
-          <ListItemText
-            id="nav-side_text"
-            style={{ color: "#ffffff" }}
-            primary={name}
-          />
-        </DashboardListItem>
-        <div className="b">
-          <div />
-        </div>
-      </NavLink>
-    ))}
-    <div style={{ paddingTop: 50 }} />
-  </div>
-);
-
 const Dashboard: React.FC<{
   location: any;
 }> = ({ location }) => {
@@ -187,6 +159,9 @@ const Dashboard: React.FC<{
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(!open);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -222,7 +197,34 @@ const Dashboard: React.FC<{
         }}
         open={open}
       >
-        <List id="nav-side">{mainListItems}</List>
+        <List id="nav-side">
+            <div className="pb-5">
+              <div style={{ paddingTop: 40 }} />
+              {routes.map(({ path, Icon, name }, index) => (
+                <NavLink exact to={path} key={index}>
+                  <div className="a">
+                    <div />
+                  </div>
+                  <div onClick={handleDrawerClose}>
+                    <DashboardListItem>
+                      <DashboardListItemIcon>
+                        <Icon title={name} />
+                      </DashboardListItemIcon>
+                      <ListItemText
+                        id="nav-side_text"
+                        style={{ color: "#ffffff" }}
+                        primary={name}
+                      />
+                    </DashboardListItem>
+                  </div>
+                  <div className="b">
+                    <div />
+                  </div>
+                </NavLink>
+              ))}
+              <div style={{ paddingTop: 50 }} />
+            </div>
+        </List>
       </Drawer>
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
